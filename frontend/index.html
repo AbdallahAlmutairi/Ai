@@ -7,9 +7,46 @@
 </head>
 <body>
   <h1>AI Stock Bot</h1>
-  <input id="symbol" type="text" placeholder="Enter symbol" />
-  <button onclick="fetchRecommendation()">Get Recommendation</button>
+  <section>
+    <input id="symbol" type="text" placeholder="Enter symbol" />
+    <select id="timeframe">
+      <option value="15m">15m</option>
+      <option value="1h">1h</option>
+      <option value="1d">1d</option>
+    </select>
+    <button onclick="fetchRecommendation()">Get Recommendation</button>
+  </section>
+
+  <section>
+    <h2>Watchlist</h2>
+    <input id="watch-symbol" type="text" placeholder="Add symbol" />
+    <button onclick="addToWatchlist()">Add</button>
+    <ul id="watchlist"></ul>
+  </section>
+
+  <section>
+    <h2>Risk Profile</h2>
+    <select id="risk-profile" onchange="updateRiskProfile()">
+      <option value="conservative">Conservative</option>
+      <option value="moderate" selected>Moderate</option>
+      <option value="aggressive">Aggressive</option>
+    </select>
+  </section>
+
+  <section>
+    <h2>Backtest</h2>
+    <input id="bt-symbol" type="text" placeholder="Symbol" />
+    <select id="bt-timeframe">
+      <option value="15m">15m</option>
+      <option value="1h">1h</option>
+      <option value="1d" selected>1d</option>
+    </select>
+    <button onclick="runBacktest()">Run</button>
+    <pre id="backtest-result"></pre>
+  </section>
+
   <pre id="result"></pre>
   <script src="/static/script.js"></script>
 </body>
 </html>
+
