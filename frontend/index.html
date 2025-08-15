@@ -7,9 +7,29 @@
 </head>
 <body>
   <h1>AI Stock Bot</h1>
-  <input id="symbol" type="text" placeholder="Enter symbol" />
-  <button onclick="fetchRecommendation()">Get Recommendation</button>
+  <section>
+    <input id="symbol" type="text" placeholder="Enter symbol" />
+    <button onclick="fetchRecommendation()">Get Recommendation</button>
+  </section>
+
+  <section>
+    <h2>Watchlist</h2>
+    <input id="watch-symbol" type="text" placeholder="Add symbol" />
+    <button onclick="addToWatchlist()">Add</button>
+    <ul id="watchlist"></ul>
+  </section>
+
+  <section>
+    <h2>Risk Profile</h2>
+    <select id="risk-profile" onchange="updateRiskProfile()">
+      <option value="conservative">Conservative</option>
+      <option value="moderate" selected>Moderate</option>
+      <option value="aggressive">Aggressive</option>
+    </select>
+  </section>
+
   <pre id="result"></pre>
   <script src="/static/script.js"></script>
 </body>
 </html>
+
