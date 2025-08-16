@@ -21,6 +21,8 @@ app = FastAPI(title="AI Stock Bot")
 # ---------------------------------------------------------------------------
 watchlist: list[str] = []
 risk_profile: str = "moderate"
+# Allowed timeframes for demo validation
+ALLOWED_TFS = {"15m", "1h", "1d"}
 
 
 @app.get("/api/recommendation/{symbol}")
@@ -34,6 +36,9 @@ async def recommendation(symbol: str, tf: str = "15m"):
     tf: str
         Timeframe for the recommendation, default ``"15m"``.
     """
+
+    if tf not in ALLOWED_TFS:
+        raise HTTPException(status_code=400, detail="Invalid timeframe")
 
     entry = 100.0
     stop_loss = 95.0
